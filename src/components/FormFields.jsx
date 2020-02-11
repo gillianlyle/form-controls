@@ -12,8 +12,11 @@ const Dropdown = () => {
 
     const handleChange = event => setValue(event.target.value);
     const handleAdd = event => setOptions([...options, value]);
-    const handleDelete = (index, option) => setOptions(options.filter(option => option !== index));
-
+    const handleDelete = (option, index) => {
+        // Create a new array of all the options except the option we want to delete
+        const updatedList = options.filter((_, index) => index !== option);
+        setOptions(updatedList);       
+    };
 
     return (
         <>
@@ -25,7 +28,12 @@ const Dropdown = () => {
                 </li>
                     
                 {options.map((option, index) => (
-                    <><li key={index}>{index + 1}. <input defaultValue={value} disabled /><button onClick={() => handleDelete(option)}>x</button></li></>
+                    <>
+                        <li key={index}>{index + 1}. 
+                            <input value={option} disabled />
+                            <button onClick={() => handleDelete(index)}><i className="material-icons">close</i></button>
+                        </li>
+                    </>
                 ))}
             </ul>
         </div>
@@ -42,5 +50,55 @@ const Dropdown = () => {
     )
 }
 
+const Checkbox = () => {
 
-export {Dropdown};
+    const [value, setValue] = useState('');
+    const [options, setOptions] = useState([]);
+
+    const handleChange = event => {setValue(event.target.value); event.preventDefault()};
+    const handleAdd = event => {setOptions([...options, value])}
+    const handleDelete = (option, index) => {
+        // Create a new array of all the options except the option we want to delete
+        const updatedList = options.filter((_, index) => index !== option);
+        setOptions(updatedList);       
+    };
+
+
+    return (
+        <>
+        <div className="left">
+            <ul>
+                <li>
+                    <input name="addOption" type="text" value={value.addOption} onChange={handleChange} placeholder="Add Option" />
+                    <button type="button" onClick={handleAdd}>Add</button>
+                </li>
+                    
+                {options.map((option, index) => (
+                    <>
+                        <li key={index}>
+                            <i className="material-icons">check_box_outline_blank</i> 
+                            <input value={option} />
+                            <button onClick={() => handleDelete(index)}><i className="material-icons">close</i></button>
+                        </li>
+                    </>
+                ))}
+            </ul>
+        </div>
+        
+        <div>
+            <ul>
+                {options.map((option, index) => (
+                    <li key={index}>
+                        <input type="checkbox" id={index} />
+                        <label htmlFor={index}>{option}</label>
+                    </li>
+                ))}
+                
+            </ul>
+        </div>
+        </>
+    )
+}
+
+
+export {Dropdown, Checkbox};
