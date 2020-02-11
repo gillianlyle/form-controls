@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown, Checkbox, MultipleChoice } from './components/FormFields.jsx';
+import { Dropdown, Checkbox, MultipleChoice, Signature } from './components/FormFields.jsx';
 import './App.css';
 
 const App = () => {
@@ -18,6 +18,11 @@ const App = () => {
       <h3>Example of Multiple Choice</h3>
       <div className="section">
         <MultipleChoice />
+      </div>
+
+      <h3>Example of Signature</h3>
+      <div className="section">
+        <Signature />
       </div>
     </div>
   );

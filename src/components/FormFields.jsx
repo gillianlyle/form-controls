@@ -21,12 +21,7 @@ const Dropdown = () => {
     return (
         <>
         <div className="left">
-            <ul>
-                <li>
-                    <input name="addOption" type="text" value={value.addOption} onChange={handleChange} placeholder="Add Option" />
-                    <button type="button" onClick={handleAdd}>Add</button>
-                </li>
-                    
+            <ul>                    
                 {options.map((option, index) => (
                     <>
                         <li key={index}>{index + 1}. 
@@ -35,6 +30,10 @@ const Dropdown = () => {
                         </li>
                     </>
                 ))}
+                <li>
+                    <input name="addOption" type="text" value={value.addOption} onChange={handleChange} placeholder="Add Option" />
+                    <button type="button" onClick={handleAdd}>Add</button>
+                </li>
             </ul>
         </div>
         
@@ -57,32 +56,31 @@ const Checkbox = () => {
     const [options, setOptions] = useState([]);
 
     const handleChange = event => {setValue(event.target.value); event.preventDefault()};
-    const handleAdd = event => {setOptions([...options, value])}
+    const handleAdd = event => setOptions([...options, value])
     const handleDelete = (option, index) => {
         // Create a new array of all the options except the option we want to delete
         const updatedList = options.filter((_, index) => index !== option);
         setOptions(updatedList);       
     };
 
-
     return (
         <>
         <div className="left">
             <ul>
-                <li>
-                    <input name="addOption" type="text" value={value.addOption} onChange={handleChange} placeholder="Add Option" />
-                    <button type="button" onClick={handleAdd}>Add</button>
-                </li>
-                    
                 {options.map((option, index) => (
                     <>
                         <li key={index}>
                             <i className="material-icons">check_box_outline_blank</i> 
                             <input value={option} />
-                            <button onClick={() => handleDelete(index)}><i className="material-icons">close</i></button>
+                            <button type="button" onClick={() => handleDelete(index)}><i className="material-icons">close</i></button>
                         </li>
                     </>
                 ))}
+
+                 <li>
+                    <i className="material-icons">check_box_outline_blank</i><input name="addOption" type="text" value={value.addOption} onChange={handleChange} placeholder="Add Option" />
+                    <button type="button" onClick={handleAdd}>Add</button>
+                </li>
             </ul>
         </div>
         
@@ -117,12 +115,7 @@ const MultipleChoice = () => {
     return (
         <>
         <div className="left">
-            <ul>
-                <li>
-                    <input name="addOption" type="text" value={value.addOption} onChange={handleChange} placeholder="Add Option" />
-                    <button type="button" onClick={handleAdd}>Add</button>
-                </li>
-                    
+            <ul>                    
                 {options.map((option, index) => (
                     <li key={index}>
                         <i className="material-icons">radio_button_unchecked</i> 
@@ -130,6 +123,11 @@ const MultipleChoice = () => {
                         <button onClick={() => handleDelete(index)}><i className="material-icons">close</i></button>
                     </li>
                 ))}
+                <li>
+                    <i className="material-icons">radio_button_unchecked</i>
+                    <input name="addOption" type="text" value={value.addOption} onChange={handleChange} placeholder="Add Option" />
+                    <button type="button" onClick={handleAdd}>Add</button>
+                </li>
             </ul>
         </div>
         
@@ -148,4 +146,18 @@ const MultipleChoice = () => {
 }
 
 
-export {Dropdown, Checkbox, MultipleChoice};
+const Signature = () => {
+
+    
+
+    return (
+        <>
+            <canvas id="canvasInAPerfectWorld" width="490" height="220"></canvas>
+        </>
+    )
+}
+
+
+
+
+export {Dropdown, Checkbox, MultipleChoice, Signature}; 
