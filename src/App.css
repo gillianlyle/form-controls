@@ -1,0 +1,12 @@
+body{background:#eee}
+.section {border:1px solid #ddd; padding:40px; margin:10px; background:#fff; display: inline-flex;}
+.left{flex:1}
+
+ul, li {list-style: none; padding:0; margin:10px}
+
+input{border:0;border-bottom:1px solid #ddd; margin-right:10px; padding:10px; }
+button{padding:10px}
+
+select{border:0;border-bottom:1px solid #ddd; margin-right:10px; padding:10px; width:250px}
+
+.question:focus {background:#f4f4f4; border-bottom:1px solid purple; outline:0 none}
