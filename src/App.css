@@ -10,3 +10,5 @@ button{padding:10px; background:none; border:0 none; padding:0; margin:0}
 select{border:0;border-bottom:1px solid #ddd; margin-right:10px; padding:10px; width:250px}
 
 .question:focus {background:#f4f4f4; border-bottom:1px solid purple; outline:0 none}
+
+.preview {background:#f4f4f4; padding:10px; border:1px solid #eee}
