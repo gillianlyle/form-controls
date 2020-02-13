@@ -3,7 +3,11 @@ import React, {useState} from 'react';
 const Dropdown = () => {
 
     // initialise state
+    const [question, setQuestion] = useState('')
     const [options, setOptions] = useState([{content: 'Option 1'}]);
+
+
+    const handleChange = (event) => setQuestion(event.target.value)
 
     // Pass in the input’s event and the index of the option. 
     const handleKeyDown = (event, index) => {
@@ -15,6 +19,7 @@ const Dropdown = () => {
         if (event.key === 'Backspace' && options[index].content === '') {
         event.preventDefault();
         return removeOptionAtIndex(index);
+        
         }
     }
 
@@ -39,6 +44,9 @@ const Dropdown = () => {
     return (
         <>
         <form className="left">
+
+            <input value={question} onChange={handleChange} />
+
             <ul>
                 {options.map((option, index) => (
                     <>
@@ -61,8 +69,9 @@ const Dropdown = () => {
         <div className="preview">
         <p>Preview</p>
         <br/>
-            <input type="text" list="options" placeholder="Select option" />
-            <datalist id="options">
+            <label htmlFor="options">{question && question + ": "}</label>
+            <input type="text" list="chooseOptions" name="options" id="options" placeholder="Select option" />
+            <datalist id="chooseOptions">
                 {options.map((option) => (
                     <option value={option.content} />
                 ))}
