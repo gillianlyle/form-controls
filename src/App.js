@@ -1,26 +1,29 @@
 import React from 'react';
-import { Dropdown, Checkbox, MultipleChoice, Signature } from './components/FormFields.jsx';
+import Dropdown from './components/Dropdown';
+import Checkbox from './components/Checkbox';
+import MultipleChoice from './components/MultipleChoice';
+import Signature from './components/Signature';
 import './App.css';
 
 const App = () => {
   return (
     <div className="App">
-      <h3>Example of Dropdown</h3>
+      <h3>Example of Dropdown Control</h3>
       <div className="section">
         <Dropdown />
       </div>
 
-      <h3>Example of Checkbox</h3>
+      <h3>Example of Checkbox Control</h3>
       <div className="section">
         <Checkbox />
       </div>
 
-      <h3>Example of Multiple Choice</h3>
+      <h3>Example of Multiple Choice Control</h3>
       <div className="section">
         <MultipleChoice />
       </div>
 
-      <h3>Example of Signature</h3>
+      <h3>Example of Signature Control</h3>
       <div className="section">
         <Signature />
       </div>
