@@ -82,11 +82,17 @@ const Signature = () => {
         context.clearRect(0, 0, canvas.width, canvas.height); // clear everuthing in canvas
     }
 
+    const saveCanvas = () => {
+        let canvas = document.getElementById('signature');
+        let dataURL = canvas.toDataURL();
+        console.log(dataURL);
+    }
     
     return (
         <>
             <canvas id="signature" width="490" height="220"></canvas>
             <button type="button" onClick={clearCanvas}>Clear</button>
+            <button type="button" onClick={saveCanvas}>Save</button>
         </>
     )
 }
