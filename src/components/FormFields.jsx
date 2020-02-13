@@ -22,8 +22,7 @@ const Dropdown = () => {
         const newOptions = [...options]; // Create a copy of array
         newOptions.splice(index + 2, 0, {content: `Option ${index + 2}`}); // insert new empty option after the currently selected option
         setOptions(newOptions); // update the original options array
-        setTimeout(() => {document.forms[0].elements[index + 1].focus()}, 0); // wait (0 milliseconds) after state updates then set focus to the new input
-
+        setTimeout(() => {document.getElementById(index + 1).focus()}, 0); // wait (0 milliseconds) after state updates then set focus to the new input
     }
 
     const updateOptionAtIndex = (event, index) => {
@@ -45,6 +44,7 @@ const Dropdown = () => {
                     <>
                         <li>{index + 1}. 
                         <input
+                            id={index}
                             type="text"
                             value={option.content}
                             onKeyDown={event => handleKeyDown(event, index)}
@@ -53,8 +53,6 @@ const Dropdown = () => {
                         />
                         
                         <button type="button" onClick={() => removeOptionAtIndex(index)}><i className="material-icons">close</i></button>
-                    
-                        <br />
                        </li>
                     </>
                 ))}
